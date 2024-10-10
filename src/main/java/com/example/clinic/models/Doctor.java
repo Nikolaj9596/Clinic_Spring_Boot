@@ -6,13 +6,13 @@ import javax.persistence.*;
 
 @Entity
 @Table(
-    name = "clients",
+    name = "doctors",
     uniqueConstraints = {
       @UniqueConstraint(
-          name = "uq_client_full_name",
+          name = "uq_doctor_full_name",
           columnNames = {"first_name", "last_name", "middle_name"})
     })
-public class Client {
+public class Doctor {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,16 +34,20 @@ public class Client {
   @Column(name = "date_birthday")
   private Date dateBirthday;
 
-  @Column(name = "address", length = 255)
-  private String address;
+  @Column(name = "date_start_work")
+  private Date dateStartWork;
 
-  @OneToMany(mappedBy = "client")
+  @ManyToOne
+  @JoinColumn(name = "profession_id")
+  private Profession profession;
+
+  @OneToMany(mappedBy = "doctor")
   private List<DoctorAppointment> appointments;
 
-  @OneToMany(mappedBy = "client")
+  @OneToMany(mappedBy = "doctor")
   private List<Diagnosis> diagnosis;
 
-  public Client() {
+  public Doctor() {
     // Конструктор
   }
 
@@ -95,14 +99,6 @@ public class Client {
     this.dateBirthday = dateBirthday;
   }
 
-  public String getAddress() {
-    return address;
-  }
-
-  public void setAddress(String address) {
-    this.address = address;
-  }
-
   public List<DoctorAppointment> getAppointments() {
     return appointments;
   }
@@ -117,5 +113,21 @@ public class Client {
 
   public void setDiagnosis(List<Diagnosis> diagnosis) {
     this.diagnosis = diagnosis;
+  }
+
+  public Date getDateStartWork() {
+    return dateStartWork;
+  }
+
+  public void setDateStartWork(Date dateStartWork) {
+    this.dateStartWork = dateStartWork;
+  }
+
+  public Profession getProfession() {
+    return profession;
+  }
+
+  public void setProfession(Profession profession) {
+    this.profession = profession;
   }
 }
