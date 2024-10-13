@@ -3,12 +3,18 @@ package com.example.clinic.models;
 import jakarta.persistence.*;
 import java.util.Collection;
 import java.util.List;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "users")
+@Builder
+@Data
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class User implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)

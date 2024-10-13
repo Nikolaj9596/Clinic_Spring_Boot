@@ -4,7 +4,6 @@ import com.example.clinic.dto.auth.JwtAuthenticationResponse;
 import com.example.clinic.dto.auth.SignInRequest;
 import com.example.clinic.dto.auth.SignUpRequest;
 import com.example.clinic.services.AuthenticationService;
-
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +18,10 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Аутентификация")
 public class AuthController {
   private final AuthenticationService authenticationService;
+
+  public AuthController(AuthenticationService authenticationService) {
+    this.authenticationService = authenticationService;
+  }
 
   @Operation(summary = "Регистрация пользователя")
   @PostMapping("/sing-up")
