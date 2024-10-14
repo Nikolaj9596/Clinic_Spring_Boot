@@ -19,10 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthController {
   private final AuthenticationService authenticationService;
 
-  public AuthController(AuthenticationService authenticationService) {
-    this.authenticationService = authenticationService;
-  }
-
   @Operation(summary = "Регистрация пользователя")
   @PostMapping("/sing-up")
   public JwtAuthenticationResponse signUp(@RequestBody SignUpRequest request) {
