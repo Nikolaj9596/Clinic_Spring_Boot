@@ -1,8 +1,12 @@
 package com.example.clinic.models;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
+@Data
+@NoArgsConstructor
+@Builder
 @Table(name = "diagnosis_disease")
 public class DiagnosisDisease {
 
@@ -13,30 +17,6 @@ public class DiagnosisDisease {
   @ManyToOne
   @JoinColumn(name = "diagnosis_id")
   private Diagnosis diagnosis;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Diagnosis getDiagnosis() {
-    return diagnosis;
-  }
-
-  public void setDiagnosis(Diagnosis diagnosis) {
-    this.diagnosis = diagnosis;
-  }
-
-  public Disease getDisease() {
-    return disease;
-  }
-
-  public void setDisease(Disease disease) {
-    this.disease = disease;
-  }
 
   @ManyToOne
   @JoinColumn(name = "disease_id")

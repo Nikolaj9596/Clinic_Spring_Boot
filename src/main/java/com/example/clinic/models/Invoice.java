@@ -1,8 +1,10 @@
 package com.example.clinic.models;
 
-import java.math.BigDecimal;
-import javax.persistence.*;
+import jakarta.persistence.*;
+import lombok.*;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "invoices")
 public class Invoice {
@@ -21,46 +23,4 @@ public class Invoice {
   @Enumerated(EnumType.STRING)
   @Column(nullable = false)
   private InvoiceStatus status;
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public User getSender() {
-    return sender;
-  }
-
-  public void setSender(User sender) {
-    this.sender = sender;
-  }
-
-  public User getRecipient() {
-    return recipient;
-  }
-
-  public void setRecipient(User recipient) {
-    this.recipient = recipient;
-  }
-
-  public InvoiceStatus getStatus() {
-    return status;
-  }
-
-  public void setStatus(InvoiceStatus status) {
-    this.status = status;
-  }
-
-  public BigDecimal getPrice() {
-    return price;
-  }
-
-  public void setPrice(BigDecimal price) {
-    this.price = price;
-  }
-
-  private BigDecimal price;
 }

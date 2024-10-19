@@ -1,20 +1,24 @@
 package com.example.clinic.models;
 
+import jakarta.persistence.*;
 import java.util.Set;
-import javax.persistence.*;
+import lombok.*;
 
 @Entity
-@Table(name = "disease")
+@Data
+@NoArgsConstructor
+@Table(name = "diseases")
 public class Disease {
+
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @Column(name = "id")
+  private Long id;
 
   @OneToMany(mappedBy = "disease")
   private Set<DiagnosisDisease> diagnosisDiseases;
 
   public Set<DiagnosisDisease> getDiagnosisDiseases() {
     return diagnosisDiseases;
-  }
-
-  public void setDiagnosisDiseases(Set<DiagnosisDisease> diagnosisDiseases) {
-    this.diagnosisDiseases = diagnosisDiseases;
   }
 }

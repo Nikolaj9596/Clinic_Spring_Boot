@@ -1,9 +1,12 @@
 package com.example.clinic.models;
 
+import jakarta.persistence.*;
 import java.sql.Date;
-import javax.persistence.*;
+import lombok.*;
 
 @Entity
+@NoArgsConstructor
+@Data
 @Table(name = "doctor_appointments")
 public class DoctorAppointment {
 
@@ -28,45 +31,5 @@ public class DoctorAppointment {
 
   public DoctorAppointment() {
     // Конструктор
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Client getClient() {
-    return client;
-  }
-
-  public void setClient(Client client) {
-    this.client = client;
-  }
-
-  public Doctor getDoctor() {
-    return doctor;
-  }
-
-  public void setDoctor(Doctor doctor) {
-    this.doctor = doctor;
-  }
-
-  public Date getStartDateAppointment() {
-    return startDateAppointment;
-  }
-
-  public void setStartDateAppointment(Date startDateAppointment) {
-    this.startDateAppointment = startDateAppointment;
-  }
-
-  public Date getEndDateAppointment() {
-    return endDateAppointment;
-  }
-
-  public void setEndDateAppointment(Date endDateAppointment) {
-    this.endDateAppointment = endDateAppointment;
   }
 }
