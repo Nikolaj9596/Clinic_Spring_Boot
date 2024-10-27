@@ -1,7 +1,7 @@
 package com.example.clinic.models;
 
 import jakarta.persistence.*;
-import java.util.Set;
+import java.util.List;
 import lombok.*;
 
 @Entity
@@ -16,9 +16,5 @@ public class Disease {
   private Long id;
 
   @OneToMany(mappedBy = "disease")
-  private Set<DiagnosisDisease> diagnosisDiseases;
-
-  public Set<DiagnosisDisease> getDiagnosisDiseases() {
-    return diagnosisDiseases;
-  }
+  private List<DiagnosisDisease> diagnosisDiseases;
 }

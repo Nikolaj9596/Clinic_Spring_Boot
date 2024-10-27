@@ -2,15 +2,19 @@ package com.example.clinic.services;
 
 import com.example.clinic.models.User;
 import com.example.clinic.repositoryes.UserRepository;
-import lombok.RequiredArgsConstructor;
+// import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class UserService {
   private final UserRepository repository;
+
+  public UserService(UserRepository repository){
+    this.repository = repository;
+  }
 
   public User save(User user) {
     return repository.save(user);

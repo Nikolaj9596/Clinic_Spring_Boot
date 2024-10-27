@@ -5,7 +5,7 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 
 import com.example.clinic.services.UserService;
 import java.util.List;
-import lombok.RequiredArgsConstructor;
+// import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -26,10 +26,16 @@ import org.springframework.web.cors.CorsConfiguration;
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class SecurityConfiguration {
   private final JwtAuthenticationFilter jwtAuthenticationFilter;
   private final UserService userService;
+
+  public SecurityConfiguration(
+      JwtAuthenticationFilter jwtAuthenticationFilter, UserService userService) {
+    this.jwtAuthenticationFilter = jwtAuthenticationFilter;
+    this.userService = userService;
+  }
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {

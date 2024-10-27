@@ -47,7 +47,4 @@ public class Client {
   @OneToMany(mappedBy = "client")
   private List<Diagnosis> diagnosis;
 
-  public Client() {
-    // Конструктор
-  }
 }

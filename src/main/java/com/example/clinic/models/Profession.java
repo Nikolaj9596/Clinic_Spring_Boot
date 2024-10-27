@@ -20,8 +20,4 @@ public class Profession {
 
   @OneToMany(mappedBy = "profession")
   private List<Doctor> doctors;
-
-  public Profession() {
-    // Конструктор
-  }
 }

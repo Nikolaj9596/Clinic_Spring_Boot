@@ -5,19 +5,30 @@ import com.example.clinic.dto.auth.SignInRequest;
 import com.example.clinic.dto.auth.SignUpRequest;
 import com.example.clinic.models.Role;
 import com.example.clinic.models.User;
-import lombok.RequiredArgsConstructor;
+// import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
-@RequiredArgsConstructor
+// @RequiredArgsConstructor
 public class AuthenticationService {
   private final UserService userService;
   private final JwtService jwtService;
   private final PasswordEncoder passwordEncoder;
   private final AuthenticationManager authenticationManager;
+
+  public AuthenticationService(
+      UserService userService,
+      JwtService jwtService,
+      PasswordEncoder passwordEncoder,
+      AuthenticationManager authenticationManager) {
+    this.userService = userService;
+    this.authenticationManager = authenticationManager;
+    this.passwordEncoder = passwordEncoder;
+    this.jwtService = jwtService;
+  }
 
   public JwtAuthenticationResponse signUp(SignUpRequest request) {
     var user =

@@ -28,8 +28,4 @@ public class DoctorAppointment {
 
   @Column(name = "end_date_appointment")
   private Date endDateAppointment;
-
-  public DoctorAppointment() {
-    // Конструктор
-  }
 }
