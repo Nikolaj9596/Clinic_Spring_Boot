@@ -1,7 +1,7 @@
 package com.example.clinic.services;
 
 import com.example.clinic.models.User;
-import com.example.clinic.repositoryes.UserRepository;
+import com.example.clinic.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

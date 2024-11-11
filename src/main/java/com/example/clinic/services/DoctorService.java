@@ -1,32 +1,45 @@
 package com.example.clinic.services;
 
-import com.example.clinic.repositoryes.Doctor;
+import com.example.clinic.models.Doctor;
+import com.example.clinic.repositories.DoctorRepository;
+import java.util.List;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class DoctorService {
-  private final DocktorRepository repository;
+  private final DoctorRepository repository;
 
-  public Doctor save(Doctor doctor) {
+  public Doctor create(Doctor doctor) {
     return repository.save(doctor);
   }
 
-  public Doctor create(Doctor doctor) {
-    if (repository.existsByFirstName(doctor.getFirstName())) {
-      throw new RuntimeException("Пользователь с  email уже существует");
+  public Doctor update(long doctor_id, Doctor doctor) {
+    if (!repository.existsById(doctor_id)) {
+      throw new RuntimeException("Врача не существует");
     }
-    return save(doctor);
+    return repository.save(doctor);
   }
 
-  public User getByUsername(String email) {
-    return repository
-        .findByEmail(email)
-        .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+  public void delete(Long doctor_id) {
+    repository.deleteById(doctor_id);
   }
 
-  public UserDetailsService userDetailsService() {
-    return this::getByUsername;
+  public Doctor getById(Long doctor_id) {
+    Optional<Doctor> doctor = repository.findById(doctor_id);
+    if (doctor.isPresent()) {
+      throw new RuntimeException("Врача не существует");
+    }
+    return doctor.get();
+  }
+
+  public List<Doctor> getAll(int limit, int offset) {
+    PageRequest pageRequest = PageRequest.of(offset, limit);
+    Page<Doctor> page = repository.findAll(pageRequest);
+    return page.getContent();
   }
 }
