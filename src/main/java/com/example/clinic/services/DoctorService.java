@@ -5,8 +5,8 @@ import com.example.clinic.repositories.DoctorRepository;
 import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -37,7 +37,7 @@ public class DoctorService {
     return doctor.get();
   }
 
-  public List<Doctor> getAll(int limit, int offset) {
+  public List<Doctor> getAll(Integer limit, Integer offset) {
     PageRequest pageRequest = PageRequest.of(offset, limit);
     Page<Doctor> page = repository.findAll(pageRequest);
     return page.getContent();
