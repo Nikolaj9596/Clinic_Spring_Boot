@@ -1,12 +1,16 @@
 package com.example.clinic.controllers;
 
+import com.example.clinic.dto.doctor.CreateDoctorDto;
 import com.example.clinic.models.Doctor;
+import com.example.clinic.models.Profession;
 import com.example.clinic.services.DoctorService;
+import com.example.clinic.services.ProfessionService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,13 +28,26 @@ import org.springframework.web.bind.annotation.RestController;
 @Tag(name = "Врачи")
 public class DoctorController {
   private final DoctorService doctorService;
+  private final ProfessionService professionService;
+  private final ModelMapper mapper;
 
   @Operation(summary = "Создание Врача")
   @PostMapping("")
   @SecurityRequirement(name = "bearerAuth")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public Doctor createDoctor(@RequestBody Doctor request) {
-    return doctorService.create(request);
+  public Doctor createDoctor(@RequestBody CreateDoctorDto request) {
+    Profession profession = professionService.getById(request.getProfessionId());
+    Doctor doctor =
+        Doctor.builder()
+            .firstName(request.getFirstName())
+            .lastName(request.getLastName())
+            .middleName(request.getMiddleName())
+            .avatar(request.getAvatar())
+            .dateBirthday(request.getDateBirthday())
+            .dateStartWork(request.getDateStartWork())
+            .profession(profession)
+            .build();
+    return doctorService.create(doctor);
   }
 
   @Operation(summary = "Удаление Врача")
@@ -45,8 +62,20 @@ public class DoctorController {
   @PutMapping("/{id}")
   @SecurityRequirement(name = "bearerAuth")
   @PreAuthorize("hasRole('ROLE_ADMIN')")
-  public Doctor updateDoctor(@PathVariable String id, @RequestBody Doctor request) {
-    return doctorService.update(Long.parseLong(id), request);
+  public Doctor updateDoctor(@PathVariable String id, @RequestBody CreateDoctorDto request) {
+
+    Profession profession = professionService.getById(request.getProfessionId());
+    Doctor doctor =
+        Doctor.builder()
+            .firstName(request.getFirstName())
+            .lastName(request.getLastName())
+            .middleName(request.getMiddleName())
+            .avatar(request.getAvatar())
+            .dateBirthday(request.getDateBirthday())
+            .dateStartWork(request.getDateStartWork())
+            .profession(profession)
+            .build();
+    return doctorService.update(Long.parseLong(id), doctor);
   }
 
   @Operation(summary = "Получение карточки Врача")

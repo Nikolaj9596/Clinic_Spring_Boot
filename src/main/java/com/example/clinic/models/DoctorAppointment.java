@@ -1,8 +1,10 @@
 package com.example.clinic.models;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Date;
-import lombok.*;
 
 @Entity
 @NoArgsConstructor

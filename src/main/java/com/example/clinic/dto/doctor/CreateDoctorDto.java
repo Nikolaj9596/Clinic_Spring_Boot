@@ -11,5 +11,5 @@ public class CreateDoctorDto {
   private String avatar;
   private Date dateBirthday;
   private Date dateStartWork;
-  private Long profession_id;
+  private Long professionId;
 }

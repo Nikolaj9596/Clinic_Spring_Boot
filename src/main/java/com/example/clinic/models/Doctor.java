@@ -1,13 +1,17 @@
 package com.example.clinic.models;
 
 import jakarta.persistence.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.sql.Date;
 import java.util.List;
-import lombok.*;
 
 @Entity
 @Data
 @NoArgsConstructor
+// @Builder
 @Table(
     name = "doctors",
     uniqueConstraints = {

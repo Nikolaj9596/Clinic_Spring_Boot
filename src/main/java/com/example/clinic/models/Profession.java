@@ -2,12 +2,15 @@ package com.example.clinic.models;
 
 import jakarta.persistence.*;
 import java.util.List;
-import lombok.*;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
 @NoArgsConstructor
 @Table(name = "professions")
+// @Builder
 public class Profession {
 
   @Id
