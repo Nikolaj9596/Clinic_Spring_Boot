@@ -4,7 +4,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class CreateDiagnosisDto {
+public class RequestDiagnosisDto {
   private String name;
   private Long client_id;
   private Long doctor_id;
