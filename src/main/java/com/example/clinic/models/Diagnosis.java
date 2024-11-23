@@ -15,9 +15,6 @@ public class Diagnosis {
   @Column(name = "id")
   private Long id;
 
-
-
-
   @Column(name = "name", length = 255)
   private String name;
 

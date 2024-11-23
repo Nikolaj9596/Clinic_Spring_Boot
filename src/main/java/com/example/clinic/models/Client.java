@@ -9,6 +9,8 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@Builder
+@AllArgsConstructor
 @Table(
     name = "clients",
     uniqueConstraints = {
@@ -48,3 +50,4 @@ public class Client {
   private List<Diagnosis> diagnosis;
 
 }
+
