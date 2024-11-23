@@ -6,7 +6,9 @@ import lombok.*;
 
 @Entity
 @Data
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "diseases")
 public class Disease {
 

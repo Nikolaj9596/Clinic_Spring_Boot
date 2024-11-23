@@ -6,7 +6,7 @@ import lombok.Data;
 @Data
 public class RequestDiagnosisDto {
   private String name;
-  private Long client_id;
-  private Long doctor_id;
+  private Long clientId;
+  private Long doctorId;
   private List<Long> diagnosisDiseases;
 }
