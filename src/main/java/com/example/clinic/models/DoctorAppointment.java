@@ -1,13 +1,14 @@
 package com.example.clinic.models;
 
-import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.sql.Date;
+
+import jakarta.persistence.*;
+import lombok.*;
 
 @Entity
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Data
 @Table(name = "doctor_appointments")
 public class DoctorAppointment {
